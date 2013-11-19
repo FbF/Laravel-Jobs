@@ -1,0 +1,1 @@
+@include ('laravel-jobs::list')

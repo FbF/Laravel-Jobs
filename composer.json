@@ -1,0 +1,26 @@
+{
+    "name": "fbf/laravel-jobs",
+    "description": "",
+    "authors": [
+        {
+            "name": "Neil Crookes",
+            "email": "neil.crookes@fivebyfiveuk.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+        "cviebrock/eloquent-sluggable": "1.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/controllers",
+            "src/migrations",
+            "src/models"
+        ],
+        "psr-0": {
+            "Fbf\\LaravelJobs": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
