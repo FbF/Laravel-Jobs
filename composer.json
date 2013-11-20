@@ -1,6 +1,7 @@
 {
     "name": "fbf/laravel-jobs",
-    "description": "",
+    "description": "A Laravel 4 package for adding jobs listings to a website",
+    "license": "MIT",
     "authors": [
         {
             "name": "Neil Crookes",
