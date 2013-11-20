@@ -11,6 +11,8 @@ class Job extends \Eloquent {
 
 	protected $table = 'fbf_jobs';
 
+	protected $softDelete = true;
+
 	public static $sluggable = array(
         'build_from' => 'title',
         'save_to'    => 'slug',
