@@ -40,11 +40,11 @@ return array(
 	 * - text 		A text based salary field is shown. You can enter any kind of format
 	 * 				in here. For example "From $30k", "Negotiable", "$35k - $45k"
 	 * - number 	A single salary field is shown and only numbers can be enterred, e.g.
-	 * 				"45000"
+	 * 				"45000". It is stored in the salary_from field in the database
 	 * - range 		Two salary fields are shown ('from' and 'to') and only numbers can be
 	 * 				enterred into each of them, e.g. "45000" and "55000"
 	 */
-	'salary_fields' => 'range',
+	'salary_field' => 'range',
 
 	/**
 	 * Determines whether to use a closing date field in your app

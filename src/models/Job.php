@@ -18,4 +18,13 @@ class Job extends \Eloquent {
         'save_to'    => 'slug',
     );
 
+	/**
+	 * Returns the url of the job
+	 * @return mixed
+	 */
+	public function getUrl()
+	{
+		return \URL::action('Fbf\LaravelJobs\JobsController@view', array('slug' => $this->slug));
+	}
+
 }

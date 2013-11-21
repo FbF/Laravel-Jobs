@@ -24,13 +24,13 @@ class CreateJobsTable extends Migration {
 			$table->string('salary_text')->nullable();
 			$table->float('salary_from',10,2)->nullable();
 			$table->float('salary_to',10,2)->nullable();
+			$table->date('closing_date')->nullable();
 			$table->text('description')->nullable();
 			$table->text('search_extra')->nullable();
 			$table->text('meta_description')->nullable();
 			$table->text('meta_keywords')->nullable();
-			$table->date('closing_date')->nullable();
-			$table->date('published_date')->nullable();
 			$table->enum('status', array('DRAFT', 'APPROVED'))->default('DRAFT');
+			$table->dateTime('published_date');
 			$table->timestamps();
 			$table->softDeletes();
 		});

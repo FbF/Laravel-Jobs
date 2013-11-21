@@ -20,7 +20,7 @@ class LaravelJobsServiceProvider extends ServiceProvider {
 	{
 		$this->package('fbf/laravel-jobs');
 
-    	// include __DIR__.'/../../routes.php';
+    	include __DIR__.'/../../routes.php';
 
         \App::register('Cviebrock\EloquentSluggable\SluggableServiceProvider');
 

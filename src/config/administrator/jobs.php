@@ -35,40 +35,46 @@ return array(
 		'reference' => array(
 			'title' => 'Ref',
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_reference_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_reference_field');
+				}
 		),
 		'location' => array(
 			'title' => 'Location',
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_location_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_location_field');
+				}
 		),
 		'type' => array(
 			'title' => 'Perm/temp',
+			'select' => "CASE (:table).type WHEN '".Fbf\LaravelJobs\Job::PERMANENT."' THEN 'Permanent' WHEN '".Fbf\LaravelJobs\Job::TEMPORARY."' THEN 'Temporary' END",
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_type_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_type_field');
+				}
 		),
 		'time' => array(
 			'title' => 'Part/full time',
+			'select' => "CASE (:table).time WHEN '".Fbf\LaravelJobs\Job::FULL_TIME."' THEN 'Full time' WHEN '".Fbf\LaravelJobs\Job::PART_TIME."' THEN 'Part time' END",
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_time_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_time_field');
+				}
 		),
 		'closing_date' => array(
 			'title' => 'Closing date',
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_closing_date_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_closing_date_field');
+				}
+		),
+		'published_date' => array(
+			'title' => 'Published',
 		),
 		'status' => array(
 			'title' => 'Status',
+			'select' => "CASE (:table).status WHEN '".Fbf\LaravelJobs\Job::APPROVED."' THEN 'Approved' WHEN '".Fbf\LaravelJobs\Job::DRAFT."' THEN 'Draft' END",
 		),
 		'updated_at' => array(
 			'title' => 'Last Updated'
@@ -89,25 +95,25 @@ return array(
 			'title' => 'Slug',
 			'type' => 'text',
 			'visible' => function($model)
-			{
-				return $model->exists;
-			},
+				{
+					return $model->exists;
+				},
 		),
 		'reference' => array(
 			'title' => 'Reference',
 			'type' => 'text',
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_reference_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_reference_field');
+				}
 		),
 		'location' => array(
 			'title' => 'Location',
 			'type' => 'text',
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_location_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_location_field');
+				}
 		),
 		'type' => array(
 			'title' => 'Type',
@@ -117,9 +123,9 @@ return array(
 				Fbf\LaravelJobs\Job::TEMPORARY => 'Temporary',
 			),
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_type_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_type_field');
+				}
 		),
 		'time' => array(
 			'title' => 'Time',
@@ -129,37 +135,58 @@ return array(
 				Fbf\LaravelJobs\Job::FULL_TIME => 'Full time',
 			),
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_time_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_time_field');
+				}
 		),
 		'salary_text' => array(
-			'title' => 'Salary',
+			'title' => 'Salary (free text)',
 			'type' => 'text',
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::salary') == 'text';
-			}
+				{
+					return Config::get('laravel-jobs::salary_field') == 'text';
+				}
 		),
 		'salary_from' => array(
-			'title' => 'Salary (from)',
+			'title' => Config::get('laravel-jobs::salary_field') == 'range' ? 'Salary from (number)' : 'Salary (number)',
 			'type' => 'number',
+			'symbol' => '£', //optional, defaults to ''
+			'decimals' => 2, //optional, defaults to 0
+			'thousands_separator' => ',', //optional, defaults to ','
+			'decimal_separator' => '.', //optional, defaults to '.'
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::salary') == 'number' || Config::get('laravel-jobs::salary') == 'range';
-			}
+				{
+					return Config::get('laravel-jobs::salary_field') == 'number' || Config::get('laravel-jobs::salary_field') == 'range';
+				}
 		),
 		'salary_to' => array(
-			'title' => 'Salary (to)',
+			'title' => 'Salary to (number)',
 			'type' => 'number',
+			'symbol' => '£', //optional, defaults to ''
+			'decimals' => 2, //optional, defaults to 0
+			'thousands_separator' => ',', //optional, defaults to ','
+			'decimal_separator' => '.', //optional, defaults to '.'
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::salary') == 'range';
-			}
+				{
+					return Config::get('laravel-jobs::salary_field') == 'range';
+				}
+		),
+		'closing_date' => array(
+			'title' => 'Closing date',
+			'type' => 'date',
+			'date_format' => 'yy-mm-dd', //optional, will default to this value
+			'visible' => function ($model)
+				{
+					return Config::get('laravel-jobs::use_closing_date_field');
+				}
 		),
 		'description' => array(
 			'title' => 'Job description',
 			'type' => 'wysiwyg',
+		),
+		'search_extra' => array(
+			'title' => 'Add any keywords in here that you want to be searchable',
+			'type' => 'textarea',
 		),
 		'meta_description' => array(
 			'title' => 'Meta Description',
@@ -169,15 +196,6 @@ return array(
 			'title' => 'Meta Keywords',
 			'type' => 'textarea',
 		),
-		'closing_date' => array(
-			'title' => 'Closing date',
-		    'type' => 'date',
-		    'date_format' => 'yy-mm-dd', //optional, will default to this value
-			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_closing_date_field');
-			}
-		),
 		'status' => array(
 			'type' => 'enum',
 			'title' => 'Status',
@@ -185,6 +203,12 @@ return array(
 				Fbf\LaravelJobs\Job::DRAFT => 'Draft',
 				Fbf\LaravelJobs\Job::APPROVED => 'Approved',
 			),
+		),
+		'published_date' => array(
+			'title' => 'Published Date',
+			'type' => 'datetime',
+			'date_format' => 'yy-mm-dd', //optional, will default to this value
+			'time_format' => 'HH:mm',    //optional, will default to this value
 		),
 		'created_at' => array(
 			'title' => 'Created',
@@ -210,17 +234,17 @@ return array(
 		'reference' => array(
 			'title' => 'Reference',
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_reference_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_reference_field');
+				}
 		),
 		'location' => array(
 			'title' => 'Location',
 			'type' => 'text',
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_location_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_location_field');
+				}
 		),
 		'type' => array(
 			'title' => 'Type',
@@ -230,9 +254,9 @@ return array(
 				Fbf\LaravelJobs\Job::TEMPORARY => 'Temporary',
 			),
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_type_field');
-			}
+				{
+					return Config::get('laravel-jobs::use_type_field');
+				}
 		),
 		'time' => array(
 			'title' => 'Time',
@@ -242,17 +266,21 @@ return array(
 				Fbf\LaravelJobs\Job::FULL_TIME => 'Full time',
 			),
 			'visible' => function ($model)
-			{
-				return Config::get('laravel-jobs::use_time_field');
-			}
-		),
-		'description' => array(
-			'type' => 'text',
-			'title' => 'Description',
+				{
+					return Config::get('laravel-jobs::use_time_field');
+				}
 		),
 		'closing_date' => array(
 			'type' => 'date',
 			'title' => 'Closing date',
+			'visible' => function ($model)
+				{
+					return Config::get('laravel-jobs::use_closing_date_field');
+				}
+		),
+		'description' => array(
+			'type' => 'text',
+			'title' => 'Description',
 		),
 		'status' => array(
 			'type' => 'enum',
@@ -261,6 +289,10 @@ return array(
 				Fbf\LaravelJobs\Job::DRAFT => 'Draft',
 				Fbf\LaravelJobs\Job::APPROVED => 'Approved',
 			),
+		),
+		'published_date' => array(
+			'title' => 'Published',
+			'type' => 'date',
 		),
 	),
 
@@ -271,14 +303,16 @@ return array(
 		'location' => 'max:250',
 		'type' => 'in:' . Fbf\LaravelJobs\Job::PERMANENT . ',' . Fbf\LaravelJobs\Job::TEMPORARY,
 		'time' => 'in:' . Fbf\LaravelJobs\Job::FULL_TIME . ',' . Fbf\LaravelJobs\Job::PART_TIME,
-		// 'salary_text' => '',
-		'salary_from' => 'number',
-		'salary_to' => 'number',
-		'description' => 'required',
-		// 'meta_description' => '',
-		// 'meta_keywords' => '',,
+		'salary_text' => 'max:250',
+		'salary_from' => 'numeric',
+		'salary_to' => 'numeric',
 		'closing_date' => 'date|date_format:Y-m-d',
-		'status' => 'required',
+		'description' => 'required',
+		'search_extra' => '',
+		'meta_description' => '',
+		'meta_keyword' => '',
+		'status' => 'required|in:' . Fbf\LaravelJobs\Job::DRAFT . ',' . Fbf\LaravelJobs\Job::APPROVED,
+		'published_date' => 'date|date_format:Y-m-d H:i:s',
 	),
 
 	/**
@@ -306,8 +340,8 @@ return array(
 	 * @type function
 	 */
 	'link' => function($model)
-	{
-		return URL::action('Fbf\LaravelJobs\JobsController@view', array('slug' => $model->slug));
-	},
+		{
+			return $model->getUrl();
+		},
 
 );

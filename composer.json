@@ -11,7 +11,8 @@
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.0.x",
-        "cviebrock/eloquent-sluggable": "1.0.*"
+        "cviebrock/eloquent-sluggable": "1.0.*",
+        "judev/php-htmltruncator": "dev-master"
     },
     "autoload": {
         "classmap": [
