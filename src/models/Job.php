@@ -16,6 +16,8 @@ class Job extends \Eloquent {
 	public static $sluggable = array(
         'build_from' => 'title',
         'save_to'    => 'slug',
+        'separator' => '-',
+        'unique' => true,
     );
 
 	/**

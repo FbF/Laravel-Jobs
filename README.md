@@ -44,6 +44,8 @@ Run the migration
 
     php artisan migrate --package="fbf/laravel-jobs"
 
+Optionally copy the administrator config to your administrators model config directory, if you have one
+
 ## Configuration
 
 Coming soon
