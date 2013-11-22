@@ -26,7 +26,14 @@ return array(
 		),
 		'submit' => 'Filter'
 	),
+	'salary' => array(
+		'string' => '&pound;:number',
+		'decimals' => '2',
+		'dec_point' => '.',
+		'thousands_sep' => ',',
+	),
 	'misc' => array(
-		'read_more' => 'Read more &raquo;'
+		'read_more' => 'Read more &raquo;',
+		'no_matching_jobs' => 'Sorry, there are currently no jobs matching your criteria, please try again.'
 	)
 );

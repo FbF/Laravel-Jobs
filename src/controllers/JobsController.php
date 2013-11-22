@@ -23,7 +23,7 @@ class JobsController extends \BaseController {
 			$keywords = \Input::get('keywords');
 			if (!empty($keywords))
 			{
-				$query->where('type','=',\Input::get('time'));
+				$query->where('description','like','%'.$keywords.'%');
 			}
 		}
 
@@ -38,11 +38,13 @@ class JobsController extends \BaseController {
 			->where('published_date','<=',\Carbon\Carbon::now())
 			->where('slug','=',$slug)
 			->first();
+
 		if (!$job)
 		{
 			\App::abort(404);
 		}
-		return \View::make(\Config::get('laravel-jobs::detail_view'))->with(compact('job'));
+
+		return \View::make(\Config::get('laravel-jobs::view_view'))->with(compact('job'));
 	}
 
 }
