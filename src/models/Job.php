@@ -29,4 +29,18 @@ class Job extends \Eloquent {
 		return \URL::action('Fbf\LaravelJobs\JobsController@view', array('slug' => $this->slug));
 	}
 
+	/**
+	 * Returns a live job by slug
+	 * @param  string $slug The slug of the job to find
+	 * @return Job Instance of Fbf\LaravelJobs\Job
+	 */
+	public static function findBySlug($slug)
+	{
+		return self::where('status','=',Job::APPROVED)
+			->where('closing_date','>=',\Carbon\Carbon::now())
+			->where('published_date','<=',\Carbon\Carbon::now())
+			->where('slug','=',$slug)
+			->first();
+	}
+
 }

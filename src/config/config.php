@@ -65,5 +65,48 @@ return array(
 	 */
 	'view_view' => 'laravel-jobs::view',
 
+	/**
+	 * Determines whether users can apply for jobs through the website.
+	 */
+	'apply' => true,
+
+	/**
+	 * Determines whether the CV upload field is required
+	 */
+	'is_cv_required' => true,
+
+	/**
+	 * Determines whether the covering letter field is required
+	 */
+	'is_covering_letter_required' => true,
+
+	/**
+	 * Comma separated list of the allowed mime types for the CV upload field as per the
+	 * Laravel mimes validation rule
+	 */
+	'cv_allowed_mimes' => 'doc,docx,rtf,pdf',
+
+	/**
+	 * The view to use for the job application page. You can change this to a view in your
+	 * app, and inside your own view you can @include the form partial in the package
+	 * or you can use this one provided, but there's no layout or anything.
+	 */
+	'application_view' => 'laravel-jobs::application',
+
+	/**
+	 * The settings for the email that is sent from the jobs application form
+	 */
+    'mail' => array(
+        'views' => array(
+            'laravel-jobs::emails.html.application',
+            'laravel-jobs::emails.text.application',
+        ),
+        'to' => array(
+            'name' => 'Human Resources',
+            'email' => 'hr@example.com',
+        ),
+        'subject' => 'Website Job Application',
+	),
+
 
 );
