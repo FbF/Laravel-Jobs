@@ -18,6 +18,7 @@ class Job extends \Eloquent {
         'save_to'    => 'slug',
         'separator' => '-',
         'unique' => true,
+        'include_trashed' => true,
     );
 
 	/**
