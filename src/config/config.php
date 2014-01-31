@@ -8,6 +8,27 @@ return array(
 	'uri' => 'jobs',
 
 	/**
+	 * Page title of the jobs index page
+	 *
+	 * @type string
+	 */
+	'index_page_title' => 'Careers',
+
+	/**
+	 * Meta description of the jobs index page
+	 *
+	 * @type string
+	 */
+	'index_page_meta_description' => 'This is the description for the jobs index page',
+
+	/**
+	 * Meta keywords of the jobs index page
+	 *
+	 * @type string
+	 */
+	'index_page_meta_keywords' => 'These are the keywords for the jobs index page',
+
+	/**
 	 * Determines whether to use a reference field in case your app's jobs have a job
 	 * reference that applicant's should mention when applying, or maybe it's useful to
 	 * tie in with your business' HR department
