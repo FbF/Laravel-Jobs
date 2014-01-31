@@ -21,6 +21,7 @@ A Laravel 4 package for adding jobs listings to a website
 * Migration for creating the fbf_jobs table
 * Model, controller and views (main view and partials)
 * Built in configurable routes
+* Faker seed to seed your database with loads of good test data
 
 ## Installation
 
@@ -57,3 +58,9 @@ You can use the excellent Laravel Administrator package by frozennode to adminis
 http://administrator.frozennode.com/docs/installation
 
 A ready-to-use model config file for the Job model (jobs.php) is provided in the src/config/administrator directory of the package, which you can copy into the app/config/administrator directory (or whatever you set as the model_config_path in the administrator config file).
+
+## Faker seed
+
+The package comes with a seed that can populate the table with a whole bunch of sample posts. There are some configuration options for the seed in the config file. To run it:
+
+    php artisan db:seed --class="Fbf\LaravelBlog\PostTableFakeSeeder"
