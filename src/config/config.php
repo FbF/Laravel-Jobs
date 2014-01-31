@@ -52,6 +52,11 @@ return array(
 	'use_closing_date_field' => true,
 
 	/**
+	 * Defines the number of jobs shown per page the index page
+	 */
+	'results_per_page' => 10,
+
+	/**
 	 * The view to use for the jobs index page. You can change this to a view in your
 	 * app, and inside your own view you can @include the various elements in the package
 	 * or you can use this one provided, but there's no layout or anything.

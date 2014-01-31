@@ -24,6 +24,8 @@
 
 	@endforeach
 
+	{{ $jobs->links() }}
+
 @else
 
 	<p class="no-matching-jobs">{{ trans('laravel-jobs::copy.misc.no_matching_jobs') }}</p>

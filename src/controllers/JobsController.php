@@ -27,7 +27,7 @@ class JobsController extends \BaseController {
 			}
 		}
 
-		$jobs = $query->paginate();
+		$jobs = $query->paginate(\Config::get('laravel-jobs::results_per_page'));
 		return \View::make(\Config::get('laravel-jobs::index_view'))->with(compact('jobs'));
 	}
 
