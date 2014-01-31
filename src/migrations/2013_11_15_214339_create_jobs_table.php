@@ -14,6 +14,7 @@ class CreateJobsTable extends Migration {
 	{
 		Schema::create('fbf_jobs', function(Blueprint $table)
 		{
+			$table->engine = 'MyISAM'; // means you can't use foreign key constraints
 			$table->increments('id');
 			$table->string('title');
 			$table->string('slug')->unique();
@@ -34,6 +35,7 @@ class CreateJobsTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 		});
+		DB::statement('ALTER TABLE fbf_jobs ADD FULLTEXT search(title,description,reference,location,search_extra,meta_description,meta_keywords)');
 	}
 
 	/**
@@ -43,6 +45,9 @@ class CreateJobsTable extends Migration {
 	 */
 	public function down()
 	{
+		Schema::table('fbf_jobs', function($table) {
+			$table->dropIndex('search');
+		});
 		Schema::drop('fbf_jobs');
 	}
 

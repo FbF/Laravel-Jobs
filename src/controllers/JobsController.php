@@ -23,7 +23,7 @@ class JobsController extends \BaseController {
 			$keywords = \Input::get('keywords');
 			if (!empty($keywords))
 			{
-				$query->where('description','like','%'.$keywords.'%');
+				$query->whereRaw("MATCH(title,description,reference,location,search_extra,meta_description,meta_keywords) AGAINST(? IN BOOLEAN MODE)", array($keywords));
 			}
 		}
 
