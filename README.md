@@ -61,6 +61,6 @@ A ready-to-use model config file for the Job model (jobs.php) is provided in the
 
 ## Faker seed
 
-The package comes with a seed that can populate the table with a whole bunch of sample posts. There are some configuration options for the seed in the config file. To run it:
+The package comes with a seed that can populate the table with a whole bunch of sample jobs. To run it:
 
-    php artisan db:seed --class="Fbf\LaravelBlog\PostTableFakeSeeder"
+    php artisan db:seed --class="Fbf\LaravelJobs\JobsTableFakeSeeder"

@@ -111,26 +111,9 @@ return array(
     'seed' => array(
 
 	    /**
-	     * Should the seeder append (replace = false) or replace (true)
+	     * Should the seeder append (replace = false) or replace (replace = true) existing data
 	     */
-	    'replace' => true,
-
-	    /**
-	     * List of the you tube video ids that could be used
-	     */
-	    'you_tube_video_ids' => array(
-		    'dQw4w9WgXcQ'
-	    ),
-
-	    /**
-	     * One in every X posts is a YouTube Video (use 0 for no YouTube Videos)
-	     */
-	    'you_tube_video_freq' => 5,
-
-	    /**
-	     * One in every X posts that is not a YouTube Video, has an image (use 0 for no images)
-	     */
-	    'image_freq' => 2,
+	    'replace' => false,
 
     ),
 
