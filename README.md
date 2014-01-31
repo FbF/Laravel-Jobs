@@ -5,12 +5,13 @@ A Laravel 4 package for adding jobs listings to a website
 
 ## Features
 
-* Jobs index and detail functionality
+* Jobs index and detail page functionality with search
+* Ability to apply for a job and upload a CV
 * Jobs can be draft or approved
 * Jobs can be permanent or temporary and part time or full time
 * Flexible configurable way of having salaries associated with a job
 * They have a published date that you can set in the future for delayed/scheduled publishing
-* Job slugs can be automatically created from the job title
+* Job slugs are automatically created from the job title
 * Control meta description and keywords of job detail pages for SEO purposes
 * Uses soft deletes in case you need to retrieve old content
 * Configure the rendered views so you can use one in your app rather than the one in the package
@@ -49,7 +50,7 @@ Optionally copy the administrator config to your administrators model config dir
 
 ## Configuration
 
-Coming soon
+There are loads of options in the config file, check it out.
 
 ## Administrator
 
