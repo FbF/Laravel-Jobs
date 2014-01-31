@@ -19,7 +19,7 @@ A Laravel 4 package for adding jobs listings to a website
 
 ## Comes with a
 
-* Migration for creating the fbf_jobs table
+* Migration for creating the fbf_jobs table (N.B. The search function makes use of MySQL Full Text search, so the engine is set to MyISAM)
 * Model, controller and views (main view and partials)
 * Built in configurable routes
 * Faker seed to seed your database with loads of good test data
