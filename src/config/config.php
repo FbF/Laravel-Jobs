@@ -15,6 +15,13 @@ return array(
 	'index_page_title' => 'Careers',
 
 	/**
+	 * Order jobs on index page
+	 *
+	 * @type string
+	 */
+	'index_order' => 'desc',
+
+	/**
 	 * Meta description of the jobs index page
 	 *
 	 * @type string
